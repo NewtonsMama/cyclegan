@@ -3,14 +3,14 @@ import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-TRAIN_DIR = "/content/drive/MyDrive/data/train"
-VAL_DIR = "/content/drive/MyDrive/data/val"
+TRAIN_DIR = "/kaggle/input/horse-zebra/data/train"
+VAL_DIR = "/kaggle/input/horse-zebra/data/val"
 BATCH_SIZE = 1
 LEARNING_RATE = 1e-5
 LAMBDA_IDENTITY = 0.0
 LAMBDA_CYCLE = 10
 NUM_WORKERS = 2
-NUM_EPOCHS = 150
+NUM_EPOCHS = 2
 LOAD_MODEL = False
 SAVE_MODEL = True
 CHECKPOINT_GEN_H = "genh.pth.tar"
