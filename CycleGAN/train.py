@@ -93,8 +93,8 @@ def train_fn(
         g_scaler.update()
 
         if idx % 200 == 0 and epoch% 5 ==0:
-            save_image(fake_horse * 0.5 + 0.5, f"saved_images/horse_{epoch}_{idx}.png")
-            save_image(fake_zebra * 0.5 + 0.5, f"saved_images/zebra_{epoch}_{idx}.png")
+            save_image(fake_horse * 0.5 + 0.5, f"/kaggle/working/cyclegan/CycleGAN/saved_images/horse_{epoch}_{idx}.png")
+            save_image(fake_zebra * 0.5 + 0.5, f"/kaggle/working/cyclegan/CycleGAN/saved_images/zebra_{epoch}_{idx}.png")
 
         loop.set_postfix(H_real=H_reals / (idx + 1), H_fake=H_fakes / (idx + 1))
 
