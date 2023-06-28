@@ -21,12 +21,12 @@ from generator_model import Generator
 
 
 def train_fn(
-    disc_H, disc_Z, gen_Z, gen_H, loader, opt_disc, opt_gen, l1, mse, d_scaler, g_scaler
+    disc_H, disc_Z, gen_Z, gen_H, loader, opt_disc, opt_gen, l1, mse, d_scaler, g_scaler,epoch
 ):
     H_reals = 0
     H_fakes = 0
     loop = tqdm(loader, leave=True)
-
+   
     for idx, (zebra, horse) in enumerate(loop):
         zebra = zebra.to(config.DEVICE)
         horse = horse.to(config.DEVICE)
@@ -92,9 +92,9 @@ def train_fn(
         g_scaler.step(opt_gen)
         g_scaler.update()
 
-        if idx % 200 == 0:
-            save_image(fake_horse * 0.5 + 0.5, f"saved_images/horse_{idx}.png")
-            save_image(fake_zebra * 0.5 + 0.5, f"saved_images/zebra_{idx}.png")
+        if idx % 200 == 0 and epoch% 5 ==0:
+            save_image(fake_horse * 0.5 + 0.5, f"saved_images/horse_{epoch}_{idx}.png")
+            save_image(fake_zebra * 0.5 + 0.5, f"saved_images/zebra_{epoch}_{idx}.png")
 
         loop.set_postfix(H_real=H_reals / (idx + 1), H_fake=H_fakes / (idx + 1))
 
@@ -146,13 +146,13 @@ def main():
         )
 
     dataset = HorseZebraDataset(
-        root_horse=config.TRAIN_DIR + "/horses",
-        root_zebra=config.TRAIN_DIR + "/zebras",
+        root_horse=config.TRAIN_DIR + "/trainA",
+        root_zebra=config.TRAIN_DIR + "/trainB",
         transform=config.transforms,
     )
     val_dataset = HorseZebraDataset(
-        root_horse="cyclegan_test/horse1",
-        root_zebra="cyclegan_test/zebra1",
+        root_horse=config.VAL_DIR + "/testA",
+        root_zebra=config.VAL_DIR + "/testB",
         transform=config.transforms,
     )
     val_loader = DataLoader(
@@ -184,6 +184,7 @@ def main():
             mse,
             d_scaler,
             g_scaler,
+            epoch,
         )
 
         if config.SAVE_MODEL:
