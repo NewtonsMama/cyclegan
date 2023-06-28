@@ -146,13 +146,13 @@ def main():
         )
 
     dataset = HorseZebraDataset(
-        root_horse=config.TRAIN_DIR + "/trainA",
-        root_zebra=config.TRAIN_DIR + "/trainB",
+        root_horse=config.TRAIN_DIR + "/horses",
+        root_zebra=config.TRAIN_DIR + "/zebras",
         transform=config.transforms,
     )
     val_dataset = HorseZebraDataset(
-        root_horse=config.VAL_DIR + "/testA",
-        root_zebra=config.VAL_DIR + "/testB",
+        root_horse=config.VAL_DIR + "/horses",
+        root_zebra=config.VAL_DIR + "/zebras",
         transform=config.transforms,
     )
     val_loader = DataLoader(
