@@ -72,10 +72,10 @@ def train_fn(
             cycle_horse_loss = l1(horse, cycle_horse)
 
             # identity loss (remove these for efficiency if you set lambda_identity=0)
-            # identity_zebra = gen_Z(zebra)
-            # identity_horse = gen_H(horse)
-            # identity_zebra_loss = l1(zebra, identity_zebra)
-            # identity_horse_loss = l1(horse, identity_horse)
+            identity_zebra = gen_Z(zebra)
+            identity_horse = gen_H(horse)
+            identity_zebra_loss = l1(zebra, identity_zebra)
+            identity_horse_loss = l1(horse, identity_horse)
 
             # add all togethor
             G_loss = (
@@ -93,8 +93,14 @@ def train_fn(
         g_scaler.update()
 
         if idx % 200 == 0 and epoch% 5 ==0:
-            save_image(fake_horse * 0.5 + 0.5, f"{config.SAVE_IMG_TRAIN_DIR}/horse_{epoch}_{idx}.png")
-            save_image(fake_zebra * 0.5 + 0.5, f"{config.SAVE_IMG_TRAIN_DIR}/zebra_{epoch}_{idx}.png")
+            fake_horse = fake_horse*0.5 + 0.5
+            zebra = zebra*0.5 + 0.5
+
+            fake_zebra = fake_zebra*0.5 + 0.5
+            horse = horse* 0.5 +0.5
+
+            save_image(torch.cat((zebra,fake_horse),0), f"{config.SAVE_IMG_TRAIN_DIR}/horse_{epoch}_{idx}.png")
+            save_image(torch.cat((horse, fake_zebra),0), f"{config.SAVE_IMG_TRAIN_DIR}/zebra_{epoch}_{idx}.png")
 
         loop.set_postfix(H_real=H_reals / (idx + 1), H_fake=H_fakes / (idx + 1))
 
