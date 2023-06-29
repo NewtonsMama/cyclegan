@@ -72,10 +72,10 @@ def train_fn(
             cycle_horse_loss = l1(horse, cycle_horse)
 
             # identity loss (remove these for efficiency if you set lambda_identity=0)
-            identity_zebra = gen_Z(zebra)
-            identity_horse = gen_H(horse)
-            identity_zebra_loss = l1(zebra, identity_zebra)
-            identity_horse_loss = l1(horse, identity_horse)
+            # identity_zebra = gen_Z(zebra)
+            # identity_horse = gen_H(horse)
+            # identity_zebra_loss = l1(zebra, identity_zebra)
+            # identity_horse_loss = l1(horse, identity_horse)
 
             # add all togethor
             G_loss = (
