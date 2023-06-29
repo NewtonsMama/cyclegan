@@ -93,8 +93,8 @@ def train_fn(
         g_scaler.update()
 
         if idx % 200 == 0 and epoch% 5 ==0:
-            save_image(fake_horse * 0.5 + 0.5, f"/kaggle/working/cyclegan/CycleGAN/saved_images/horse_{epoch}_{idx}.png")
-            save_image(fake_zebra * 0.5 + 0.5, f"/kaggle/working/cyclegan/CycleGAN/saved_images/zebra_{epoch}_{idx}.png")
+            save_image(fake_horse * 0.5 + 0.5, f"{config.SAVE_IMG_TRAIN_DIR}/horse_{epoch}_{idx}.png")
+            save_image(fake_zebra * 0.5 + 0.5, f"{config.SAVE_IMG_TRAIN_DIR}/zebra_{epoch}_{idx}.png")
 
         loop.set_postfix(H_real=H_reals / (idx + 1), H_fake=H_fakes / (idx + 1))
 
@@ -146,13 +146,13 @@ def main():
         )
 
     dataset = HorseZebraDataset(
-        root_horse=config.TRAIN_DIR + "/trainA",
-        root_zebra=config.TRAIN_DIR + "/trainB",
+        root_horse=config.TRAIN_A_DIR,
+        root_zebra=config.TRAIN_B_DIR,
         transform=config.transforms,
     )
     val_dataset = HorseZebraDataset(
-        root_horse=config.VAL_DIR + "/testA",
-        root_zebra=config.VAL_DIR + "/testB",
+        root_horse=config.VAL_A_DIR ,
+        root_zebra=config.VAL_B_DIR,
         transform=config.transforms,
     )
     val_loader = DataLoader(
