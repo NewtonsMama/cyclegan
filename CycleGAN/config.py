@@ -4,16 +4,16 @@ from albumentations.pytorch import ToTensorV2
 #import torchvision.transforms as T
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-TRAIN_A_DIR = "/kaggle/input/mri-ct-processed/processed_images/train/trainA"
-TRAIN_B_DIR = "/kaggle/input/mri-ct-processed/processed_images/train/trainB"
-VAL_A_DIR = "/kaggle/input/mri-ct-processed/processed_images/val/testA"
-VAL_B_DIR = "/kaggle/input/mri-ct-processed/processed_images/val/testB"
+TRAIN_A_DIR = "/kaggle/input/mr-ct-data/mr-ct-data/train/trainA"
+TRAIN_B_DIR = "/kaggle/input/mr-ct-data/mr-ct-data/train/trainB"
+VAL_A_DIR = "/kaggle/input/mr-ct-data/mr-ct-data/test/testA"
+VAL_B_DIR = "//kaggle/input/mr-ct-data/mr-ct-data/test/testB"
 BATCH_SIZE = 1
 LEARNING_RATE = 1e-5
 LAMBDA_IDENTITY = 0.0
 LAMBDA_CYCLE = 10
 NUM_WORKERS = 2
-NUM_EPOCHS = 81
+NUM_EPOCHS = 2
 IN_CHANNELS = 1
 LOAD_MODEL = False
 SAVE_MODEL = True
