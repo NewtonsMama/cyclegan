@@ -83,8 +83,8 @@ def train_fn(
                 + loss_G_H
                 + cycle_zebra_loss * config.LAMBDA_CYCLE
                 + cycle_horse_loss * config.LAMBDA_CYCLE
-                + identity_horse_loss * config.LAMBDA_IDENTITY
-                + identity_zebra_loss * config.LAMBDA_IDENTITY
+                #+ identity_horse_loss * config.LAMBDA_IDENTITY
+                #+ identity_zebra_loss * config.LAMBDA_IDENTITY
             )
 
         opt_gen.zero_grad()
