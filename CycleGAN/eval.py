@@ -82,5 +82,5 @@ def main():
     gen_H.eval()
     eval_fn(gen_Z, gen_H, val_loader)
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
