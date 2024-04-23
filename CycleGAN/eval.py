@@ -35,8 +35,8 @@ def eval_fn(gen_Z, gen_H, loader):
 
 
 def main():
-    gen_Z = Generator(img_channels=3, num_residuals=9).to(config.DEVICE)
-    gen_H = Generator(img_channels=3, num_residuals=9).to(config.DEVICE)
+    gen_Z = Generator(img_channels=config.IN_CHANNELS, num_residuals=9).to(config.DEVICE)
+    gen_H = Generator(img_channels=config.IN_CHANNELS, num_residuals=9).to(config.DEVICE)
 
     opt_gen = optim.Adam(
         list(gen_Z.parameters()) + list(gen_H.parameters()),
