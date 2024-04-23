@@ -25,6 +25,8 @@ def eval_fn(gen_Z, gen_H, loader):
         fake_horse = gen_H(zebra)
         fake_zebra = gen_Z(horse)
         fake_horse = fake_horse*0.5+0.5
+        zebra = zebra*0.5 +0.5
+        horse = horse*0.5 + 0.5
         fake_zebra = fake_zebra*0.5+0.5
 
         save_image(fake_horse, f"{config.SAVE_IMG_TEST_DIR}/test/horse_{idx}.png")
