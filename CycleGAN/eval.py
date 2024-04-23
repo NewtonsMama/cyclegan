@@ -31,8 +31,8 @@ def eval_fn(gen_Z, gen_H, loader):
 
         save_image(fake_horse, f"{config.SAVE_IMG_TEST_DIR}/test/gen_horse/{idx}.png")
         save_image(fake_zebra, f"{config.SAVE_IMG_TEST_DIR}/test/gen_zebra/{idx}.png")
-        save_image(fake_horse, f"{config.SAVE_IMG_TEST_DIR}/test/ori_horse/{idx}.png")
-        save_image(fake_zebra, f"{config.SAVE_IMG_TEST_DIR}/test/ori_zebra/{idx}.png")
+        save_image(horse, f"{config.SAVE_IMG_TEST_DIR}/test/ori_horse/{idx}.png")
+        save_image(zebra, f"{config.SAVE_IMG_TEST_DIR}/test/ori_zebra/{idx}.png")
         
 
 
