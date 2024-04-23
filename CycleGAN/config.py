@@ -22,7 +22,7 @@ CHECKPOINT_GEN_Z = "/kaggle/input/cyclegan-generator-weights/genz.pth.tar"
 CHECKPOINT_CRITIC_H = "critich.pth.tar"
 CHECKPOINT_CRITIC_Z = "criticz.pth.tar"
 SAVE_IMG_TRAIN_DIR = "/kaggle/working/cyclegan/CycleGAN/saved_images"
-
+SAVE_IMG_TEST_DIR =  "/kaggle/working/cyclegan/CycleGAN/test_images"
 transforms = A.Compose(
     [
         #A.Resize(width=64, height=64),
