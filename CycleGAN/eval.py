@@ -28,8 +28,8 @@ def eval_fn(gen_Z, gen_H, loader):
         save_image(fake_horse*0.5+0.5, f"{config.SAVE_IMG_TRAIN_DIR}/test/horse_{idx}.png")
         save_image(fake_zebra*0.5+0.5, f"{config.SAVE_IMG_TRAIN_DIR}/test/zebra_{idx}.png")
 
-        # save_image(torch.cat((zebra,fake_horse),0), f"{config.SAVE_IMG_TRAIN_DIR}/horse_{epoch}_{idx}.png")
-        # save_image(torch.cat((horse, fake_zebra),0), f"{config.SAVE_IMG_TRAIN_DIR}/zebra_{epoch}_{idx}.png")
+        save_image(torch.cat((zebra,fake_horse),0), f"{config.SAVE_IMG_TRAIN_DIR}/compare_test/horse_{idx}.png")
+        save_image(torch.cat((horse, fake_zebra),0), f"{config.SAVE_IMG_TRAIN_DIR}/compare_test/zebra_{idx}.png")
 
         loop.set_postfix()
 
