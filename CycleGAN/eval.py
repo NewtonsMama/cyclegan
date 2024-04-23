@@ -22,8 +22,10 @@ def eval_fn(gen_Z, gen_H, loader):
         zebra = zebra.to(config.DEVICE)
         horse = horse.to(config.DEVICE)
 
-        fake_horse = gen_H(zebra)
-        fake_zebra = gen_Z(horse)
+        # fake_horse = gen_H(zebra)
+        # fake_zebra = gen_Z(horse)
+        fake_zebra = gen_Z(gen_H(zebra))
+        fake_horse = gen_H(gen_Z(horse))
         fake_horse = fake_horse*0.5+0.5
         zebra = zebra*0.5 +0.5
         horse = horse*0.5 + 0.5
@@ -36,8 +38,10 @@ def eval_fn(gen_Z, gen_H, loader):
         
 
 
-        save_image(torch.cat((zebra,fake_horse),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/horse_{idx}.png")
-        save_image(torch.cat((horse, fake_zebra),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/zebra_{idx}.png")
+        # save_image(torch.cat((zebra,fake_horse),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/horse_{idx}.png")
+        # save_image(torch.cat((horse, fake_zebra),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/zebra_{idx}.png")
+        save_image(torch.cat((zebra,fake_zebra),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/zebra_{idx}.png")
+        save_image(torch.cat((horse, fake_horse),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/horse_{idx}.png")
 
         loop.set_postfix()
 
@@ -78,5 +82,5 @@ def main():
     gen_H.eval()
     eval_fn(gen_Z, gen_H, val_loader)
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     main()
