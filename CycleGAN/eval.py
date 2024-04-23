@@ -29,8 +29,12 @@ def eval_fn(gen_Z, gen_H, loader):
         horse = horse*0.5 + 0.5
         fake_zebra = fake_zebra*0.5+0.5
 
-        save_image(fake_horse, f"{config.SAVE_IMG_TEST_DIR}/test/horse_{idx}.png")
-        save_image(fake_zebra, f"{config.SAVE_IMG_TEST_DIR}/test/zebra_{idx}.png")
+        save_image(fake_horse, f"{config.SAVE_IMG_TEST_DIR}/test/gen_horse/{idx}.png")
+        save_image(fake_zebra, f"{config.SAVE_IMG_TEST_DIR}/test/gen_zebra/{idx}.png")
+        save_image(fake_horse, f"{config.SAVE_IMG_TEST_DIR}/test/ori_horse/{idx}.png")
+        save_image(fake_zebra, f"{config.SAVE_IMG_TEST_DIR}/test/ori_zebra/{idx}.png")
+        
+
 
         save_image(torch.cat((zebra,fake_horse),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/horse_{idx}.png")
         save_image(torch.cat((horse, fake_zebra),0), f"{config.SAVE_IMG_TEST_DIR}/compare_test/zebra_{idx}.png")
